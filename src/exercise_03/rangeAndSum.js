@@ -6,8 +6,19 @@ export function range(start, end) {
   //
   // * Please implement this function and pass all the tests in range_and_array_spec.js.
   // * Please do NOT modify the signature of the function.
-
-  throw new Error('Please delete this line and implement the function');
+  const array = [];
+  if (start >= 0 && end >= 0) {
+    // eslint-disable-next-line no-plusplus
+    for (let i = start; i < end; i++) {
+      array.push(i);
+    }
+    return array;
+  }
+  // eslint-disable-next-line no-plusplus
+  for (let i = start; i > end; i--) {
+    array.push(i);
+  }
+  return array;
 }
 
 export function sum(...numbers) {
@@ -18,5 +29,14 @@ export function sum(...numbers) {
   // * Please implement this function and pass all the tests in range_and_array_spec.js.
   // * Please do NOT modify the signature of the function.
 
-  throw new Error('Please delete this line and implement the function');
+  if (numbers === 0 || typeof (numbers) === 'undefined') {
+    return 0;
+  }
+  // eslint-disable-next-line no-plusplus
+  let sumNumber = 0;
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < numbers.length; i++) {
+    sumNumber += numbers[i];
+  }
+  return sumNumber;
 }

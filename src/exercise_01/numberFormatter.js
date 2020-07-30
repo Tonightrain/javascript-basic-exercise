@@ -1,4 +1,6 @@
-import { version } from "acorn";
+/* eslint-disable no-plusplus */
+/* eslint-disable prefer-const */
+import { version } from 'acorn';
 
 export default function formatNumber(number, option) {
   // This function will format the number to a fixed number string. The decimal part should 2.
@@ -9,56 +11,54 @@ export default function formatNumber(number, option) {
   //
   // * Please implement the function and pass all the tests in format_number_spec.js.
   // * Please do NOT modify the signature of the function.
- 
-  var number,numLen,dotPos;
-  var resultNumber,n;
-  var option;
-  number=""+number;
-  numLen=number.length;
-  dotPos=number.indexOf(".", 0);
 
-  if(dotPos==-1){
-    resultNumber=number+".";
-    for(var i=0;i<2;i++){
-      resultNumber=resultNumber+"0";
+  let numLen; let dotPos;
+  let resultNumber; let n;
+  // eslint-disable-next-line no-param-reassign
+  number = `${number}`;
+  numLen = number.length;
+  dotPos = number.indexOf('.', 0);
+
+  if (dotPos === -1) {
+    resultNumber = `${number}.`;
+    for (let i = 0; i < 2; i++) {
+      resultNumber += '0';
     }
 
-    if(option!=null){
-      if(option.currency==true){
-        resultNumber="$ "+resultNumber;
+    if (option != null) {
+      if (option.currency === true) {
+        resultNumber = `$ ${resultNumber}`;
       }
     }
 
     return resultNumber;
-  }else{
-    if((numLen-dotPos-1)>=2){
-      n=1;
-      for(var j=0;j<2;j++){
-        n=n*10;
-      }
-      resultNumber=Math.round(parseFloat(number)*n)/n;
-      resultNumber=""+resultNumber;
+  }
+  if ((numLen - dotPos - 1) >= 2) {
+    n = 1;
+    for (let j = 0; j < 2; j++) {
+      n *= 10;
+    }
+    resultNumber = Math.round(parseFloat(number) * n) / n;
+    resultNumber = `${resultNumber}`;
 
-      if(option!=null){
-        if(option.currency==true){
-          resultNumber="$ "+resultNumber;
-        }
+    if (option != null) {
+      if (option.currency === true) {
+        resultNumber = `$ ${resultNumber}`;
       }
+    }
 
-      return resultNumber;
-    }else{
-      resultNumber=number;
-      for(i=0;i<(2-numLen+dotPos+1);i++){
-        resultNumber=resultNumber+"0";
-      }
+    return resultNumber;
+  }
+  resultNumber = number;
+  for (let i = 0; i < (2 - numLen + dotPos + 1); i++) {
+    resultNumber += '0';
+  }
 
-      if(option!=null){
-        if(option.currency==true){
-          resultNumber="$ "+resultNumber;
-        }
-      }
-
-      return resultNumber;
+  if (option != null) {
+    if (option.currency === true) {
+      resultNumber = `$ ${resultNumber}`;
     }
   }
+
+  return resultNumber;
 }

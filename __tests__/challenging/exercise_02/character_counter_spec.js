@@ -1,4 +1,5 @@
 import countCharacter from '../../../src/exercise_02/characterCounter';
+import { range } from '../../../src/exercise_03/rangeAndSum';
 
 // Please do NOT modifiy the code in this file.
 describe('for count character', () => {
